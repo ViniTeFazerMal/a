@@ -16,3 +16,21 @@ describe('Testando filtros e somas de veículos', () => {
     expect(resultado.length).toBe(3);
   });
 });
+
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist"
+  },
+  "include": ["src"]
+}
+"scripts": {
+  "test": "jest"
+}
+npm test
+
