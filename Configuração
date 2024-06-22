@@ -1,0 +1,18 @@
+mkdir veiculos-api
+cd veiculos-api
+npm init -y
+npm install jest ts-jest @types/jest typescript
+npx ts-jest config:init
+npm install fs
+
+veiculos-api/
+├── node_modules/
+├── src/
+│   ├── index.ts
+│   ├── veiculos.json
+│   ├── veiculos.ts
+│   ├── veiculos.test.ts
+├── jest.config.js
+├── package.json
+├── tsconfig.json
+└── tsconfig.json
