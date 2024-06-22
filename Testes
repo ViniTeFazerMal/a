@@ -1,0 +1,18 @@
+import { filtrarVeiculosPorMarca, somarValorVeiculosPorMarca, filtrarVeiculosPorAno } from './veiculos';
+
+describe('Testando filtros e somas de veículos', () => {
+  test('Filtrar carros pela marca Chevrolet', () => {
+    const resultado = filtrarVeiculosPorMarca('carros', 'Chevrolet');
+    expect(resultado.length).toBe(3);
+  });
+
+  test('Somar valor dos carros da marca VolksWagen', () => {
+    const resultado = somarValorVeiculosPorMarca('carros', 'VolksWagen');
+    expect(resultado).toBe(234000);
+  });
+
+  test('Filtrar motos mais novas que 2020', () => {
+    const resultado = filtrarVeiculosPorAno('motos', 2020);
+    expect(resultado.length).toBe(3);
+  });
+});
