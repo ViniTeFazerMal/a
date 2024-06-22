@@ -1,0 +1,34 @@
+import fs from 'fs';
+
+interface Veiculo {
+  id: number;
+  marca: string;
+  modelo: string;
+  ano: number;
+  valor: number;
+}
+
+interface Veiculos {
+  carros: {
+    novos: Veiculo[];
+    usados: Veiculo[];
+  }[];
+  motos: {
+    novos: Veiculo[];
+    usados: Veiculo[];
+  }[];
+}
+
+const veiculos: Veiculos = JSON.parse(fs.readFileSync('./src/veiculos.json', 'utf8'));
+
+export function filtrarVeiculosPorMarca(tipo: 'carros' | 'motos', marca: string): Veiculo[] {
+  return veiculos[tipo].flatMap(tipoVeiculo => [...tipoVeiculo.novos, ...tipoVeiculo.usados]).filter(veiculo => veiculo.marca === marca);
+}
+
+export function somarValorVeiculosPorMarca(tipo: 'carros' | 'motos', marca: string): number {
+  return filtrarVeiculosPorMarca(tipo, marca).reduce((soma, veiculo) => soma + veiculo.valor, 0);
+}
+
+export function filtrarVeiculosPorAno(tipo: 'carros' | 'motos', ano: number): Veiculo[] {
+  return veiculos[tipo].flatMap(tipoVeiculo => [...tipoVeiculo.novos, ...tipoVeiculo.usados]).filter(veiculo => veiculo.ano > ano);
+}
